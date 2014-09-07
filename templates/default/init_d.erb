@@ -1,0 +1,17 @@
+#!/bin/bash
+# chkconfig: 2345 90 10
+# description: newrelic-sysmond-policy start<F2>stop script
+
+. /etc/init.d/functions
+
+case "$1" in
+        stop)
+        /usr/bin/newrelic-sysmond-policy -k <%= node[:newrelic][:apikey] %> -p "<%= node[:newrelic][:server_monitoring][:shutdown_policy] %>"
+        ;;
+        start)
+        /usr/bin/newrelic-sysmond-policy -k <%= node[:newrelic][:apikey] %> -p "<%= node[:newrelic][:server_monitoring][:startup_policy] %>"
+        ;;
+*)
+        echo $"Usage: $0 {start|stop}"
+        exit
+esac
