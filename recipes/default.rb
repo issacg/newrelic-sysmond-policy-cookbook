@@ -19,6 +19,7 @@ end
 
 service "newrelic-sysmond-policy" do
    supports :start => true, :stop => true, :restart => false
+   priority 90
    action [:enable, :start]
    only_if {node[:newrelic][:apikey]}
 end
