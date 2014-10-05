@@ -3,13 +3,15 @@
 # description: newrelic-sysmond-policy start<F2>stop script
 
 . /etc/init.d/functions
+stdout_log="/var/log/newrelic-sysmond-policy.log"
+stderr_log="/var/log/newrelic-sysmond-policy.err"
 
 case "$1" in
         stop)
-        /usr/bin/newrelic-sysmond-policy -k <%= node[:newrelic][:apikey] %> -p "<%= node[:newrelic][:server_monitoring][:shutdown_policy] %>"
+        /usr/bin/newrelic-sysmond-policy -k <%= node[:newrelic][:apikey] %> -p "<%= node[:newrelic][:server_monitoring][:shutdown_policy] %>" >> "$stdout_log" 2>> "$stderr_log"
         ;;
         start)
-        /usr/bin/newrelic-sysmond-policy -k <%= node[:newrelic][:apikey] %> -p "<%= node[:newrelic][:server_monitoring][:startup_policy] %>"
+        /usr/bin/newrelic-sysmond-policy -k <%= node[:newrelic][:apikey] %> -p "<%= node[:newrelic][:server_monitoring][:startup_policy] %>" >> "$stdout_log" 2>> "$stderr_log"
         ;;
 *)
         echo $"Usage: $0 {start|stop}"
