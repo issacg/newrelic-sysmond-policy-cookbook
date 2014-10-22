@@ -6,8 +6,8 @@ description      'Installs/Configures newrelic-sysmond-policy startup/shutdown s
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.3'
 provides "service[newrelic-sysmond-policy]"
-platform 'ubuntu'
-platform 'centos'
+supports 'ubuntu'
+supports 'centos'
 
 depends 'nodejs'
 recommends 'newrelic'
