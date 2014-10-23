@@ -8,6 +8,7 @@ version          '0.1.3'
 provides "service[newrelic-sysmond-policy]"
 supports 'ubuntu'
 supports 'centos'
+supports 'amazon'
 
 depends 'nodejs'
 recommends 'newrelic'
